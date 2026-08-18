@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>macZoomConductor — The Native Command Center for macOS Browser Windows, Tabs & Multi-Display Zoom</title>
+  <meta name="description" content="Centralized browser-tab zoom control, persistent window naming, instant tab focus, and multi-display scaling for Safari, Chrome, and Firefox on macOS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Ambient background glow -->
+  <div class="ambient-glow glow-top-left"></div>
+  <div class="ambient-glow glow-top-right"></div>
+  <div class="ambient-glow glow-center"></div>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="#" class="brand-logo">
+        <div class="app-icon">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="url(#appIconGrad)"/>
+            <path d="M7 16C7 11.0294 11.0294 7 16 7C20.9706 7 25 11.0294 25 16C25 20.9706 20.9706 25 16 25" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M12 16L15 19L21 13" stroke="#00E5FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="22" cy="22" r="3" fill="#30D158"/>
+            <defs>
+              <linearGradient id="appIconGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#1C2333"/>
+                <stop offset="1" stop-color="#0B0E17"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="brand-name">macZoomConductor</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#simulator">Live Demo</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#pricing" class="btn btn-ghost">Download Trial</a>
+        <a href="#pricing" class="btn btn-primary">Get License</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>macOS Sequoia & Sonoma Ready • Apple Silicon & Intel</span>
+        </div>
+
+        <h1 class="hero-title">
+          The Native Command Center for Browser <span class="gradient-text">Windows, Tabs & Multi-Display Zoom</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Stop squinting across mismatched 4K and Retina monitors. Name your browser windows, lock custom zoom per display, jump to any tab instantly, and navigate at terminal speed with native Vi ergonomics.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#pricing" class="btn btn-primary btn-large">
+            <svg class="icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v7.586l2.293-2.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 11.586V4a1 1 0 011-1z" clip-rule="evenodd"/>
+              <path fill-rule="evenodd" d="M3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+            </svg>
+            Download 14-Day Free Trial
+          </a>
+          <a href="#simulator" class="btn btn-glass btn-large">
+            <svg class="icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+            </svg>
+            Try Live Simulator Below
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          <div class="meta-item">
+            <span class="meta-icon">✓</span> Unified for Safari, Chrome & Firefox
+          </div>
+          <div class="meta-item">
+            <span class="meta-icon">✓</span> 0% Idle CPU (No Polling)
+          </div>
+          <div class="meta-item">
+            <span class="meta-icon">✓</span> 100% Swift & Privacy Hardened
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Simulator Section -->
+    <section id="simulator" class="simulator-section">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <div class="section-tag">Interactive Preview</div>
+          <h2 class="section-title">Test Drive macZoomConductor Right in Your Browser</h2>
+          <p class="section-subtitle">
+            Click tabs, press <kbd>j</kbd>/<kbd>k</kbd> on your keyboard to navigate, switch display profiles, adjust zoom steppers, and test instant window focus.
+          </p>
+        </div>
+
+        <!-- Simulator Container (macOS Window Chrome) -->
+        <div class="macos-window-wrapper">
+          <!-- Hotkey Callout -->
+          <div class="hotkey-pill">
+            <span class="hotkey-legend">Global Hotkey:</span>
+            <span class="kbd-badge">⇧</span>
+            <span class="kbd-badge">⌘</span>
+            <span class="kbd-badge">Z</span>
+            <span class="hotkey-tip">Summons anywhere on macOS</span>
+          </div>
+
+          <div class="macos-window">
+            <!-- Title Bar -->
+            <div class="window-titlebar">
+              <div class="traffic-lights">
+                <span class="light close"></span>
+                <span class="light minimize"></span>
+                <span class="light maximize"></span>
+              </div>
+              <div class="window-title">
+                <span>macZoomConductor</span>
+                <span class="status-indicator live">Live Bridge Connected</span>
+              </div>
+              <div class="window-actions">
+                <!-- Display Switcher -->
+                <div class="display-profile-picker">
+                  <label for="displaySelector">Current Monitor:</label>
+                  <select id="displaySelector" class="display-select">
+                    <option value="studio4k" selected>Studio Display 4K (Active: 125%)</option>
+                    <option value="retina">MacBook Pro Retina (Active: 100%)</option>
+                    <option value="ultrawide">LG 38" Ultrawide (Active: 110%)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Toolbar & Filter -->
+            <div class="window-toolbar">
+              <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="simSearchInput" placeholder="Press / to filter tabs, URLs, or window names..." />
+                <kbd class="shortcut-hint">/</kbd>
+              </div>
+              <div class="toolbar-toggles">
+                <button class="toggle-btn active" id="btnToggleAll">All Tabs</button>
+                <button class="toggle-btn" id="btnToggleOverridden">Overridden Only</button>
+                <button class="icon-btn" id="btnOpenSessions" title="Session Snapshots">📋 Sessions</button>
+                <button class="icon-btn" id="btnOpenSettings" title="Settings (Touch ID Protected)">⚙️ Settings</button>
+              </div>
+            </div>
+
+            <!-- Simulator Split Body -->
+            <div class="simulator-body">
+              <!-- Left: Conductor Tree View -->
+              <div class="tree-panel">
+                <div class="panel-header">
+                  <span>Browser Hierarchy & Windows</span>
+                  <span class="tree-stats" id="treeStats">3 Browsers • 4 Windows • 9 Tabs</span>
+                </div>
+                <div class="tree-container" id="simulatorTree">
+                  <!-- Injected via JavaScript -->
+                </div>
+                <div class="tree-footer">
+                  <div class="keyboard-guide">
+                    <span><kbd>j</kbd><kbd>k</kbd> Navigate</span>
+                    <span><kbd>+</kbd><kbd>-</kbd> Zoom</span>
+                    <span><kbd>f</kbd> Focus</span>
+                    <span><kbd>r</kbd> Rename</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right: Inspector & Live Scaling Preview -->
+              <div class="preview-panel">
+                <!-- Selected Node Inspector -->
+                <div class="node-inspector" id="nodeInspector">
+                  <div class="inspector-header">
+                    <div class="inspector-target">
+                      <span class="target-type" id="inspectType">TAB</span>
+                      <span class="target-title" id="inspectTitle">AWS Cloud Console</span>
+                    </div>
+                    <div class="inspector-badge" id="inspectBadge">Active Tab</div>
+                  </div>
+
+                  <div class="inspector-controls">
+                    <div class="control-group">
+                      <span class="control-label">Zoom Precedence:</span>
+                      <div class="zoom-stepper-widget">
+                        <button class="step-btn" id="btnZoomMinus">−</button>
+                        <span class="zoom-value" id="inspectZoomValue">125%</span>
+                        <button class="step-btn" id="btnZoomPlus">+</button>
+                        <button class="step-btn reset-btn" id="btnZoomReset">Reset</button>
+                      </div>
+                    </div>
+
+                    <div class="control-actions">
+                      <button class="btn btn-sm btn-focus" id="btnTriggerFocus">
+                        <svg class="icon-sm" viewBox="0 0 20 20" fill="currentColor">
+                          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                          <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                        </svg>
+                        Focus Window / Tab
+                      </button>
+                      <button class="btn btn-sm btn-rename" id="btnTriggerRename">✏️ Rename Window</button>
+                      <button class="btn btn-sm btn-exception" id="btnTriggerLock">🔒 Lock Exception (100%)</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Live Simulated Browser Canvas -->
+                <div class="live-browser-mockup">
+                  <div class="mock-browser-bar">
+                    <div class="mock-dots">
+                      <span></span><span></span><span></span>
+                    </div>
+                    <div class="mock-url-bar" id="mockUrlBar">https://console.aws.amazon.com/dashboard</div>
+                    <div class="mock-scale-badge" id="mockScaleBadge">Rendered Scale: 125%</div>
+                  </div>
+                  <div class="mock-viewport-container">
+                    <div class="mock-viewport-content" id="mockViewport">
+                      <div class="mock-webpage">
+                        <div class="mock-header">
+                          <div class="mock-logo"></div>
+                          <div class="mock-nav-item"></div>
+                          <div class="mock-nav-item"></div>
+                          <div class="mock-user-avatar"></div>
+                        </div>
+                        <div class="mock-grid">
+                          <div class="mock-card primary">
+                            <h4>Service Metrics (Auto-Scaled)</h4>
+                            <p>Real-time cluster utilization across production us-east-1.</p>
+                            <div class="mock-chart">
+                              <div class="bar" style="height: 60%"></div>
+                              <div class="bar" style="height: 85%"></div>
+                              <div class="bar" style="height: 45%"></div>
+                              <div class="bar" style="height: 90%"></div>
+                              <div class="bar" style="height: 70%"></div>
+                            </div>
+                          </div>
+                          <div class="mock-card">
+                            <h4>Active Instances</h4>
+                            <div class="mock-line"></div>
+                            <div class="mock-line short"></div>
+                            <div class="mock-line"></div>
+                          </div>
+                          <div class="mock-card">
+                            <h4>Deployment Logs</h4>
+                            <div class="mock-line code"></div>
+                            <div class="mock-line code"></div>
+                            <div class="mock-line code short"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Status Bar -->
+            <div class="window-statusbar">
+              <span id="statusBarMsg">Connected: Chrome (5 tabs), Safari (4 tabs), Firefox (0 tabs)</span>
+              <span class="sys-perf">⚡ 0.0% CPU • 14.2 MB RAM • UNIX Domain Socket</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Features Grid -->
+    <section id="features" class="features-section">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <div class="section-tag">Engineered for Power Users</div>
+          <h2 class="section-title">Built for Multi-Screen, Multi-Browser Mastery</h2>
+          <p class="section-subtitle">
+            Every feature in macZoomConductor was purpose-built to eliminate friction in demanding professional workflows.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Card 1 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">🖥️</div>
+            <h3 class="feature-card-title">Display-Aware Custom Zoom</h3>
+            <p class="feature-card-desc">
+              Automatic low-overhead Accessibility (AX) monitor tracking detects when a window is moved to an external 4K or ultra-wide display, instantly adapting the zoom baseline without disrupting your web page layout.
+            </p>
+            <div class="feature-pill">Retina • 4K • 5K • Ultrawide</div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">🏷️</div>
+            <h3 class="feature-card-title">Persistent Window & Display Naming</h3>
+            <p class="feature-card-desc">
+              Give descriptive project tags to your browser windows (*"Production Logs"*, *"Q3 Research"*, *"Client CRM"*) and monitors. Window names persist across app launches and session snapshots.
+            </p>
+            <div class="feature-pill">No More Generic Window Titles</div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">⚡</div>
+            <h3 class="feature-card-title">Instant Window & Tab Focus</h3>
+            <p class="feature-card-desc">
+              Stop cycling through dozens of windows with <kbd>⌘~</kbd>. Hit <kbd>f</kbd> or click Focus to instantly raise any window and activate the exact tab across Safari, Chrome, and Firefox in milliseconds.
+            </p>
+            <div class="feature-pill">Zero-Lag Cross-Browser Switching</div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">🪜</div>
+            <h3 class="feature-card-title">Hierarchical Precedence Cascade</h3>
+            <p class="feature-card-desc">
+              Deterministic rule resolution: <strong>Website Exceptions</strong> (strict 100% lock for maps/Figma) > <strong>Tab Overrides</strong> > <strong>Window Overrides</strong> > <strong>Browser Defaults</strong>. Never conflicts.
+            </p>
+            <div class="feature-pill">Deterministic Rules Engine</div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">⌨️</div>
+            <h3 class="feature-card-title">Vi Keys & Global Hotkey (⇧⌘Z)</h3>
+            <p class="feature-card-desc">
+              Summon anywhere with <kbd>⇧⌘Z</kbd> (registered via Carbon HotKeys with zero Accessibility overhead). Navigate the tab tree with <kbd>j</kbd>/<kbd>k</kbd>, search with <kbd>/</kbd>, and execute commands in the Vim command bar.
+            </p>
+            <div class="feature-pill">Vim Motion Ergonomics</div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">💾</div>
+            <h3 class="feature-card-title">Session History & Snapshots</h3>
+            <p class="feature-card-desc">
+              Continuous rotating local session recording. Inspect past window and tab layouts, view display assignments, and restore named workspaces with full zoom fidelity.
+            </p>
+            <div class="feature-pill">State Recovery & History</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture & Security Section -->
+    <section id="architecture" class="architecture-section">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <div class="section-tag">Pure Native Craftsmanship</div>
+          <h2 class="section-title">Zero Idle CPU. Zero Telemetry. 100% Swift.</h2>
+          <p class="section-subtitle">
+            Most window managers and tab switchers run bloated web engines in the background. macZoomConductor is engineered like a high-performance UNIX tool.
+          </p>
+        </div>
+
+        <div class="arch-content-grid">
+          <!-- Architecture Diagram -->
+          <div class="arch-diagram-card">
+            <h4 class="card-subtitle">Event-Driven Architecture</h4>
+            <div class="wire-diagram">
+              <div class="wire-node browser">
+                <span class="node-badge">Browser Extensions</span>
+                <span class="node-desc">Safari • Chrome MV3 • Firefox</span>
+              </div>
+              <div class="wire-pipe">
+                <span class="pipe-label">stdio 4-byte LE framing</span>
+                <div class="pipe-line"></div>
+              </div>
+              <div class="wire-node relay">
+                <span class="node-badge">Native Relays</span>
+                <span class="node-desc">zc-relay-chrome • zc-relay-firefox</span>
+              </div>
+              <div class="wire-pipe">
+                <span class="pipe-label">UNIX Domain Socket (0600)</span>
+                <div class="pipe-line"></div>
+              </div>
+              <div class="wire-node host">
+                <span class="node-badge">macZoomConductor.app</span>
+                <span class="node-desc">Native SwiftUI Panel • Precedence Engine</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Benchmark & Security Checklist -->
+          <div class="arch-specs-card">
+            <h4 class="card-subtitle">Native Performance Benchmarks</h4>
+            
+            <div class="benchmark-row">
+              <div class="bench-label">
+                <span>Idle CPU Utilization</span>
+                <span class="bench-val highlight">0.0% (Zero Polling)</span>
+              </div>
+              <div class="bench-bar">
+                <div class="bar-fill native" style="width: 1%"></div>
+              </div>
+              <span class="bench-compare">vs. 4–12% on typical Electron background daemons</span>
+            </div>
+
+            <div class="benchmark-row">
+              <div class="bench-label">
+                <span>Memory Footprint</span>
+                <span class="bench-val highlight">~14 MB RAM</span>
+              </div>
+              <div class="bench-bar">
+                <div class="bar-fill native" style="width: 8%"></div>
+              </div>
+              <span class="bench-compare">vs. 180MB+ for Chromium-based menu bar utilities</span>
+            </div>
+
+            <div class="security-list">
+              <div class="sec-item">
+                <span class="sec-icon">🔒</span>
+                <div>
+                  <strong>Strict Local Origin Pinning:</strong> Relays assert exact extension identities before accepting connection handshakes.
+                </div>
+              </div>
+              <div class="sec-item">
+                <span class="sec-icon">🛡️</span>
+                <div>
+                  <strong>Biometric Diagnostics Lock:</strong> Sensitive logging and diagnostic inspection panes are locked behind Touch ID / Password.
+                </div>
+              </div>
+              <div class="sec-item">
+                <span class="sec-icon">🌐</span>
+                <div>
+                  <strong>Zero Cloud Telemetry:</strong> All data, window names, and zoom rules stay 100% on your local Mac.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <div class="section-tag">Transparent Pricing</div>
+          <h2 class="section-title">Simple, Honest Pricing. No Hidden Fees.</h2>
+          <p class="section-subtitle">
+            Every license comes with a fully functional 14-day free trial. Choose the plan that fits your workflow.
+          </p>
+
+          <!-- Billing Selector Toggle -->
+          <div class="pricing-switcher">
+            <button class="switch-btn" id="btnPricingMonthly">Monthly</button>
+            <button class="switch-btn active" id="btnPricingAnnual">
+              Annual <span class="discount-badge">Save 22%</span>
+            </button>
+            <button class="switch-btn" id="btnPricingLifetime">Lifetime</button>
+          </div>
+        </div>
+
+        <div class="pricing-cards-grid">
+          <!-- Monthly Plan -->
+          <div class="pricing-card" id="cardMonthly">
+            <div class="card-header">
+              <h3 class="tier-name">Monthly Plan</h3>
+              <p class="tier-desc">Flexible month-to-month access. Cancel anytime.</p>
+            </div>
+            <div class="price-box">
+              <span class="currency">$</span>
+              <span class="amount">1.29</span>
+              <span class="period">/ month</span>
+            </div>
+            <div class="contract-note">Billed monthly • No long-term contract</div>
+            <ul class="tier-features">
+              <li>✓ Safari, Chrome & Firefox extensions</li>
+              <li>✓ Multi-display zoom auto-detection</li>
+              <li>✓ Unlimited persistent window naming</li>
+              <li>✓ Vi-navigation & ⇧⌘Z global hotkey</li>
+              <li>✓ 14-day free trial included</li>
+            </ul>
+            <a href="#download" class="btn btn-glass btn-block">Start 14-Day Free Trial</a>
+          </div>
+
+          <!-- Annual Plan (Featured) -->
+          <div class="pricing-card featured" id="cardAnnual">
+            <div class="popular-tag">Most Popular • Best Value</div>
+            <div class="card-header">
+              <h3 class="tier-name">Annual Plan</h3>
+              <p class="tier-desc">Our best value subscription with continuous feature releases.</p>
+            </div>
+            <div class="price-box">
+              <span class="currency">$</span>
+              <span class="amount">1.00</span>
+              <span class="period">/ month</span>
+            </div>
+            <div class="contract-note highlight">$12.00 billed annually (1-year contract)</div>
+            <ul class="tier-features">
+              <li>✓ <strong>All Monthly features included</strong></li>
+              <li>✓ Priority customer support</li>
+              <li>✓ Continuous updates & new browser support</li>
+              <li>✓ Install on up to 3 personal Macs</li>
+              <li>✓ 14-day free trial included</li>
+            </ul>
+            <a href="#download" class="btn btn-primary btn-block">Get Annual License</a>
+          </div>
+
+          <!-- Lifetime Plan -->
+          <div class="pricing-card" id="cardLifetime">
+            <div class="card-header">
+              <h3 class="tier-name">Lifetime License</h3>
+              <p class="tier-desc">Pay once, own forever. For Mac software purists.</p>
+            </div>
+            <div class="price-box">
+              <span class="currency">$</span>
+              <span class="amount">19.99</span>
+              <span class="period">one-time</span>
+            </div>
+            <div class="contract-note">Single payment • Lifetime minor & major updates</div>
+            <ul class="tier-features">
+              <li>✓ <strong>All features unlocked permanently</strong></li>
+              <li>✓ Lifetime updates included forever</li>
+              <li>✓ Universal binary for Apple Silicon & Intel</li>
+              <li>✓ Install on up to 3 personal Macs</li>
+              <li>✓ 14-day money-back guarantee</li>
+            </ul>
+            <a href="#download" class="btn btn-glass btn-block">Buy Lifetime License</a>
+          </div>
+        </div>
+
+        <div class="trial-guarantee text-center">
+          <p>🛡️ All plans include an unrestricted <strong>14-day free trial</strong>. No credit card required to start.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Install / Download CTA Section -->
+    <section id="download" class="download-section">
+      <div class="section-container">
+        <div class="download-box">
+          <div class="download-content">
+            <h2 class="download-title">Ready to Take Control of Your Browser Tabs?</h2>
+            <p class="download-desc">
+              Download macZoomConductor today. Compatible with macOS 13+ (Ventura, Sonoma, Sequoia).
+            </p>
+            <div class="download-buttons">
+              <a href="#" class="btn btn-primary btn-large">
+                Download for macOS (.dmg)
+              </a>
+            </div>
+          </div>
+          <div class="install-snippet-box">
+            <div class="snippet-header">
+              <span>Terminal Quick Install</span>
+              <button class="copy-btn" id="btnCopyInstall" title="Copy to clipboard">Copy</button>
+            </div>
+            <pre class="snippet-code"><code>curl -fsSL https://browsernexus.com/install.sh | bash</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <div class="section-tag">Got Questions?</div>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-accordion">
+          <!-- Question 1 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Which web browsers are supported?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>macZoomConductor supports <strong>Safari</strong> (via native App Extension), <strong>Google Chrome</strong> (Manifest V3), and <strong>Mozilla Firefox</strong>. Brave, Microsoft Edge, Arc, and other Chromium-based browsers are also fully compatible via the Chrome extension.</p>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How does Display-Aware zoom work across multiple monitors?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>macZoomConductor tracks window positions across displays using native macOS Accessibility (AX) and Quartz APIs. When a browser window moves from your built-in Retina screen to an external 4K monitor, macZoomConductor applies your configured monitor baseline zoom (e.g. 125%) while respecting individual tab overrides and site exceptions.</p>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Does window naming survive browser restarts?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes! Window names are persisted in local atomic settings storage and matched against session metadata. When you restore windows through macZoomConductor or reopen your session, custom names re-attach automatically.</p>
+            </div>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Why does macZoomConductor use 0% idle CPU?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Unlike Electron apps or scripts that constantly poll the system every 500ms, macZoomConductor uses a 100% event-driven architecture with native stdio messaging and UNIX domain sockets. When nothing is changing on screen, zero CPU cycles are consumed, keeping your MacBook cool and preserving battery life.</p>
+            </div>
+          </div>
+
+          <!-- Question 5 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How many Macs can I install my license on?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Each license (Annual, Monthly, or Lifetime) permits installation on up to <strong>3 personal Mac computers</strong> for a single user.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="app-icon-small">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="#1C2333"/>
+            <path d="M7 16C7 11.0294 11.0294 7 16 7C20.9706 7 25 11.0294 25 16C25 20.9706 20.9706 25 16 25" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="22" cy="22" r="3" fill="#30D158"/>
+          </svg>
+        </div>
+        <span>macZoomConductor</span>
+      </div>
+
+      <div class="footer-links">
+        <span>Crafted by <strong>bricolageTheory</strong> (<a href="mailto:bricolagetheory@gmail.com">bricolagetheory@gmail.com</a>)</span>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://github.com/bricolageTheory/macZoomConductor" target="_blank" rel="noopener">GitHub</a>
+      </div>
+
+      <div class="footer-copy">
+        © 2026 macZoomConductor. All rights reserved. macOS, Safari, and Apple Silicon are trademarks of Apple Inc.
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+# Proprietary code folders (never push to website repo)
+HostApp/
+Extensions/
+dist/
+ZoomConductor Safari/
+macZoomConductor for Safari/
+scripts/
+docs/
+Manifests/
+BACKLOG.md
+QA-CHECKLIST.md
+VERSIONING.md
+.DS_Store
