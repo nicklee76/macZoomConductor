@@ -3,12 +3,142 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>macZoomConductor — The Native Command Center for macOS Browser Windows, Tabs & Multi-Display Zoom</title>
-  <meta name="description" content="Centralized browser-tab zoom control, persistent window naming, instant tab focus, and multi-display scaling for Safari, Chrome, and Firefox on macOS.">
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>macZoomConductor — Native macOS Browser Tab Zoom, Multi-Display Scaling & Window Manager</title>
+  <meta name="title" content="macZoomConductor — Native macOS Browser Tab Zoom, Multi-Display Scaling & Window Manager">
+  <meta name="description" content="The high-performance native macOS command center for Safari, Chrome & Firefox. Set custom zoom per external display, name browser windows, jump to tabs instantly, and navigate with Vi keys.">
+  <meta name="keywords" content="macOS browser zoom, external monitor zoom chrome mac, multi display browser scaling, name browser windows macos, safari tab zoom lock, vim browser tab switcher, mac power user utility, native swift window manager, browser window organizer mac">
+  <meta name="author" content="bricolageTheory">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#090B10">
+  <link rel="canonical" href="https://browsernexus.com/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://browsernexus.com/">
+  <meta property="og:site_name" content="macZoomConductor">
+  <meta property="og:title" content="macZoomConductor — Native macOS Browser Tab Zoom, Multi-Display Scaling & Window Manager">
+  <meta property="og:description" content="Centralized browser tab zoom control, persistent window naming, instant tab focus, and multi-display scaling for Safari, Chrome, and Firefox on macOS.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://browsernexus.com/og-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="macZoomConductor macOS Window and Tab Zoom Command Center Interface">
+
+  <!-- Twitter / X Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://browsernexus.com/">
+  <meta name="twitter:title" content="macZoomConductor — Native macOS Browser Tab Zoom & Window Orchestration">
+  <meta name="twitter:description" content="Set custom zoom per 4K/Retina display, name browser windows, and switch tabs with Vim shortcuts on macOS.">
+  <meta name="twitter:image" content="https://browsernexus.com/og-preview.png">
+
+  <!-- Fonts & Stylesheet -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Schema.org Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "macZoomConductor",
+    "operatingSystem": "macOS 13.0 or later (Ventura, Sonoma, Sequoia)",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "Centralized browser tab zoom control, multi-display scaling, persistent window naming, and instant tab focus across Safari, Chrome, and Firefox on macOS.",
+    "url": "https://browsernexus.com",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Annual Subscription",
+        "price": "12.00",
+        "priceCurrency": "USD",
+        "billingDuration": "P1Y",
+        "description": "$1.00/month billed annually with 1-year contract"
+      },
+      {
+        "@type": "Offer",
+        "name": "Monthly Subscription",
+        "price": "1.29",
+        "priceCurrency": "USD",
+        "billingDuration": "P1M",
+        "description": "$1.29/month billed monthly, cancel anytime"
+      },
+      {
+        "@type": "Offer",
+        "name": "Lifetime License",
+        "price": "19.99",
+        "priceCurrency": "USD",
+        "description": "One-time purchase, lifetime license and updates"
+      }
+    ],
+    "author": {
+      "@type": "Organization",
+      "name": "bricolageTheory",
+      "url": "https://github.com/bricolageTheory"
+    },
+    "featureList": [
+      "Display-Aware Multi-Monitor Zoom Scaling",
+      "Persistent Browser Window and Display Naming",
+      "Instant Tab and Window Focus Jump Across Safari, Chrome & Firefox",
+      "Hierarchical 4-Tier Zoom Precedence Cascade",
+      "Vi-Ergonomics & Global Hotkey (Shift+Cmd+Z) Navigation",
+      "0% Idle CPU Event-Driven Native Swift Architecture"
+    ]
+  }
+  </script>
+
+  <!-- Schema.org Structured Data: FAQPage (Google Rich Snippets) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which web browsers are supported by macZoomConductor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "macZoomConductor supports Safari (via native App Extension), Google Chrome (Manifest V3), Mozilla Firefox, and all Chromium-based browsers including Brave, Microsoft Edge, and Arc."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Display-Aware zoom work across multiple monitors on macOS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "macZoomConductor tracks window positions across displays using native macOS Accessibility (AX) and Quartz APIs. When a browser window moves from your built-in Retina screen to an external 4K monitor, macZoomConductor automatically applies your configured monitor baseline zoom without disrupting page layout."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does window naming survive browser restarts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Window names are persisted in local atomic settings storage and matched against session metadata. When you restore windows through macZoomConductor or reopen your session, custom names re-attach automatically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does macZoomConductor consume 0% idle CPU?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "macZoomConductor uses an event-driven architecture with native stdio messaging and UNIX domain sockets rather than continuous polling loops. When idle, zero CPU cycles and only ~14 MB RAM are consumed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many Macs can I install my license on?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Each license (Annual, Monthly, or Lifetime) permits installation on up to 3 personal Mac computers for a single user."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- Ambient background glow -->
