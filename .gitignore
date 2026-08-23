@@ -11,3 +11,11 @@ BACKLOG.md
 QA-CHECKLIST.md
 VERSIONING.md
 .DS_Store
+*.env
+.env
+.venv/
+__pycache__/
+*service-account*.json
+*.json.key
+tools/traffic_reporter/*.log
+tools/traffic_reporter/*.err

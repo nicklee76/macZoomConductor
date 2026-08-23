@@ -1,0 +1,21 @@
+[project]
+name = "browsernexus-traffic-reporter"
+version = "0.1.0"
+description = "Daily GA4 traffic report sent to Telegram"
+authors = [
+    { name = "Nick Lee", email = "coolnickldd@gmail.com" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "google-analytics-data>=0.18.0",
+    "requests>=2.31.0",
+    "python-dotenv>=1.0.1",
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+package-mode = false
