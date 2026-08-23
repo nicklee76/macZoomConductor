@@ -104,41 +104,34 @@ import base64
 from google.oauth2 import service_account
 
 
-def clean_private_key(key_str: str) -> str:
-    """Ensure PEM private key lines and linebreaks are correctly formatted."""
-    key_str = key_str.replace("\\n", "\n").replace("\\r", "\n")
-    lines = []
-    for line in key_str.splitlines():
-        line = line.strip()
-        if not line:
-            continue
-        if line.startswith("-----"):
-            lines.append(line)
-        else:
-            lines.append(line.replace("\\", ""))
-    return "\n".join(lines) + "\n"
-
-
 def load_sa_dict(raw: str) -> dict:
-    """Parse Service Account JSON from raw string, handling base64, unescaped newlines and escapes."""
+    """Parse Service Account JSON from raw string, base64 string, or json."""
     raw = raw.strip()
+    
+    # 1. Base64 decoded check
     if not raw.startswith("{"):
         try:
             decoded = base64.b64decode(raw).decode("utf-8")
             if decoded.strip().startswith("{"):
-                raw = decoded.strip()
+                return json.loads(decoded.strip())
         except Exception:
             pass
 
+    # 2. Standard JSON
     try:
-        data = json.loads(raw, strict=False)
-    except json.JSONDecodeError:
-        fixed = re.sub(r"\\(?![\"\\/bfnrt]|u[0-9a-fA-F]{4})", r"\\\\", raw)
-        data = json.loads(fixed, strict=False)
+        return json.loads(raw)
+    except Exception:
+        pass
 
-    if "private_key" in data and isinstance(data["private_key"], str):
-        data["private_key"] = clean_private_key(data["private_key"])
-    return data
+    # 3. Non-strict JSON
+    try:
+        return json.loads(raw, strict=False)
+    except Exception:
+        pass
+
+    # 4. Escape-sanitized JSON
+    fixed = re.sub(r"\\(?![\"\\/bfnrt]|u[0-9a-fA-F]{4})", r"\\\\", raw)
+    return json.loads(fixed, strict=False)
 
 
 def fetch_report(date_range_str: str = "yesterday") -> str:
