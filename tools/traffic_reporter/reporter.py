@@ -6,10 +6,13 @@ Author: Nick Lee <coolnickldd@gmail.com>
 
 import os
 import sys
+import json
+import socket
 from datetime import datetime
 from pathlib import Path
 import requests
 from dotenv import load_dotenv
+from google.oauth2 import service_account
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import (
     DateRange,
@@ -32,8 +35,37 @@ if not os.path.isabs(CREDENTIALS_FILE):
     CREDENTIALS_FILE = str(Path(__file__).parent / CREDENTIALS_FILE)
 
 
+def validate_config():
+    """Validate that required environment variables / secrets are present."""
+    missing = []
+    if not GA4_PROPERTY_ID or not GA4_PROPERTY_ID.strip():
+        missing.append("GA4_PROPERTY_ID")
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_BOT_TOKEN.strip():
+        missing.append("TELEGRAM_BOT_TOKEN")
+    if not TELEGRAM_CHAT_ID or not TELEGRAM_CHAT_ID.strip():
+        missing.append("TELEGRAM_CHAT_ID")
+    
+    sa_json = os.getenv("GA4_SERVICE_ACCOUNT_JSON")
+    has_sa = (sa_json and sa_json.strip()) or os.path.exists(CREDENTIALS_FILE)
+    if not has_sa:
+        missing.append("GA4_SERVICE_ACCOUNT_JSON (or local service-account.json file)")
+
+    if missing:
+        print(f"❌ Configuration Error: Missing required secrets/env variables: {', '.join(missing)}", file=sys.stderr)
+        sys.exit(1)
+
+
 def setup_dns_resolution():
     """Bypass local DNS sinkholes (e.g. Tailscale/NextDNS adblockers) using DNS-over-HTTPS."""
+    try:
+        # Check standard DNS resolution first
+        addrs = socket.getaddrinfo("analyticsdata.googleapis.com", 443)
+        valid = any(sockaddr[0] not in ("0.0.0.0", "::", "127.0.0.1", "::1") for _, _, _, _, sockaddr in addrs)
+        if valid:
+            return  # Normal DNS works (e.g. on GitHub Actions runner)
+    except Exception:
+        pass
+
     try:
         r = requests.get("https://dns.google/resolve?name=analyticsdata.googleapis.com", timeout=4)
         if r.status_code == 200:
@@ -49,8 +81,7 @@ def setup_dns_resolution():
                     return _orig(host, port, family, type, proto, flags)
 
                 socket.getaddrinfo = patched_getaddrinfo
-    except Exception as e:
-        # Fallback to default system resolver if DoH fails
+    except Exception:
         pass
 
 
@@ -210,6 +241,7 @@ def send_telegram(text: str) -> dict:
 
 
 def main():
+    validate_config()
     date_arg = sys.argv[1] if len(sys.argv) > 1 else "yesterday"
     print(f"Fetching GA4 report for {date_arg} (Property: {GA4_PROPERTY_ID})...")
     report_message = fetch_report(date_arg)
