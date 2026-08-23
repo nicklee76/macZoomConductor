@@ -1,0 +1,42 @@
+name: Daily GA4 Traffic Telegram Report
+
+on:
+  schedule:
+    # Runs every day at 16:00 UTC (9:00 AM PDT)
+    - cron: '0 16 * * *'
+  workflow_dispatch:
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: latest
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
+      - name: Install dependencies
+        working-directory: ./tools/traffic_reporter
+        run: |
+          poetry install --no-interaction
+
+      - name: Run Traffic Reporter
+        working-directory: ./tools/traffic_reporter
+        env:
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
+        run: |
+          echo "$GA4_SERVICE_ACCOUNT_JSON" > service-account.json
+          poetry run python reporter.py yesterday
