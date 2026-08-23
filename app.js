@@ -1,8 +1,15 @@
 /**
  * browserNexus — Product Webpage Script
  * Handles pricing plan switching, FAQ accordion toggles,
- * and command snippet copy interactions.
+ * command snippet copy interactions, and GA4 event tracking.
  */
+
+// --- GA4 Helper ---
+function trackEvent(eventName, eventParams = {}) {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', eventName, eventParams);
+  }
+}
 
 // --- Pricing Switcher ---
 function setupPricingSwitcher() {
@@ -16,7 +23,7 @@ function setupPricingSwitcher() {
 
   if (!btnMonthly || !btnAnnual || !btnLifetime) return;
 
-  function setPricingMode(mode) {
+  function setPricingMode(mode, userInitiated = false) {
     [btnMonthly, btnAnnual, btnLifetime].forEach(b => b.classList.remove('active'));
     [cardMonthly, cardAnnual, cardLifetime].forEach(c => {
       if (c) c.classList.remove('featured');
@@ -32,11 +39,17 @@ function setupPricingSwitcher() {
       btnLifetime.classList.add('active');
       if (cardLifetime) cardLifetime.classList.add('featured');
     }
+
+    if (userInitiated) {
+      trackEvent('select_pricing_tier', {
+        tier: mode
+      });
+    }
   }
 
-  btnMonthly.addEventListener('click', () => setPricingMode('monthly'));
-  btnAnnual.addEventListener('click', () => setPricingMode('annual'));
-  btnLifetime.addEventListener('click', () => setPricingMode('lifetime'));
+  btnMonthly.addEventListener('click', () => setPricingMode('monthly', true));
+  btnAnnual.addEventListener('click', () => setPricingMode('annual', true));
+  btnLifetime.addEventListener('click', () => setPricingMode('lifetime', true));
 }
 
 // --- FAQ Accordion ---
@@ -62,6 +75,9 @@ function setupFaqAccordion() {
         if (answer) {
           answer.style.maxHeight = answer.scrollHeight + 'px';
         }
+        trackEvent('faq_expand', {
+          question: button.textContent.trim()
+        });
       }
     });
   });
@@ -81,13 +97,33 @@ function setupSnippetCopy() {
         btnCopy.textContent = 'Copy';
         btnCopy.style.color = 'var(--accent-primary)';
       }, 2000);
+
+      trackEvent('copy_install_command', {
+        event_category: 'engagement',
+        event_label: 'curl_install_snippet'
+      });
+    });
+  });
+}
+
+// --- CTA Click Tracking ---
+function setupCtaTracking() {
+  document.querySelectorAll('a.btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const btnText = btn.textContent.trim();
+      const href = btn.getAttribute('href');
+      trackEvent('click_cta', {
+        cta_text: btnText,
+        cta_destination: href
+      });
     });
   });
 }
 
 // --- Global Namespace ---
 window.browserNexus = {
-  version: '1.0.0'
+  version: '1.0.0',
+  trackEvent: trackEvent
 };
 
 // --- Initialization ---
@@ -95,4 +131,5 @@ document.addEventListener('DOMContentLoaded', () => {
   setupPricingSwitcher();
   setupFaqAccordion();
   setupSnippetCopy();
+  setupCtaTracking();
 });
