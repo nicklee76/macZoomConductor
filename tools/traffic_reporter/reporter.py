@@ -98,8 +98,48 @@ def format_duration(seconds_float: float) -> str:
     return f"{secs}s"
 
 
+import re
 import json
+import base64
 from google.oauth2 import service_account
+
+
+def clean_private_key(key_str: str) -> str:
+    """Ensure PEM private key lines and linebreaks are correctly formatted."""
+    key_str = key_str.replace("\\n", "\n").replace("\\r", "\n")
+    lines = []
+    for line in key_str.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        if line.startswith("-----"):
+            lines.append(line)
+        else:
+            lines.append(line.replace("\\", ""))
+    return "\n".join(lines) + "\n"
+
+
+def load_sa_dict(raw: str) -> dict:
+    """Parse Service Account JSON from raw string, handling base64, unescaped newlines and escapes."""
+    raw = raw.strip()
+    if not raw.startswith("{"):
+        try:
+            decoded = base64.b64decode(raw).decode("utf-8")
+            if decoded.strip().startswith("{"):
+                raw = decoded.strip()
+        except Exception:
+            pass
+
+    try:
+        data = json.loads(raw, strict=False)
+    except json.JSONDecodeError:
+        fixed = re.sub(r"\\(?![\"\\/bfnrt]|u[0-9a-fA-F]{4})", r"\\\\", raw)
+        data = json.loads(fixed, strict=False)
+
+    if "private_key" in data and isinstance(data["private_key"], str):
+        data["private_key"] = clean_private_key(data["private_key"])
+    return data
+
 
 def fetch_report(date_range_str: str = "yesterday") -> str:
     """Fetch analytics report from GA4 API and format as Telegram Markdown."""
@@ -109,9 +149,7 @@ def fetch_report(date_range_str: str = "yesterday") -> str:
     sa_json_str = os.getenv("GA4_SERVICE_ACCOUNT_JSON")
     if sa_json_str and sa_json_str.strip():
         try:
-            sa_info = json.loads(sa_json_str, strict=False)
-            if "private_key" in sa_info and isinstance(sa_info["private_key"], str):
-                sa_info["private_key"] = sa_info["private_key"].replace("\\n", "\n")
+            sa_info = load_sa_dict(sa_json_str)
             credentials = service_account.Credentials.from_service_account_info(sa_info)
             client = BetaAnalyticsDataClient(credentials=credentials, transport="rest")
         except Exception as e:
