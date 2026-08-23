@@ -111,7 +111,8 @@ def load_sa_dict(raw: str) -> dict:
     # 1. Base64 decoded check
     if not raw.startswith("{"):
         try:
-            decoded = base64.b64decode(raw).decode("utf-8")
+            clean_b64 = re.sub(r"\s+", "", raw)
+            decoded = base64.b64decode(clean_b64).decode("utf-8")
             if decoded.strip().startswith("{"):
                 return json.loads(decoded.strip())
         except Exception:
