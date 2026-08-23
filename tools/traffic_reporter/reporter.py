@@ -67,13 +67,33 @@ def format_duration(seconds_float: float) -> str:
     return f"{secs}s"
 
 
+import json
+from google.oauth2 import service_account
+
 def fetch_report(date_range_str: str = "yesterday") -> str:
     """Fetch analytics report from GA4 API and format as Telegram Markdown."""
     if not GA4_PROPERTY_ID or not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         raise ValueError("Missing configuration: GA4_PROPERTY_ID, TELEGRAM_BOT_TOKEN, or TELEGRAM_CHAT_ID")
 
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = CREDENTIALS_FILE
-    client = BetaAnalyticsDataClient(transport="rest")
+    sa_json_str = os.getenv("GA4_SERVICE_ACCOUNT_JSON")
+    if sa_json_str and sa_json_str.strip():
+        try:
+            sa_info = json.loads(sa_json_str)
+            credentials = service_account.Credentials.from_service_account_info(sa_info)
+            client = BetaAnalyticsDataClient(credentials=credentials, transport="rest")
+        except Exception as e:
+            print(f"Warning: Failed to parse GA4_SERVICE_ACCOUNT_JSON from env: {e}", file=sys.stderr)
+            if os.path.exists(CREDENTIALS_FILE):
+                credentials = service_account.Credentials.from_service_account_file(CREDENTIALS_FILE)
+                client = BetaAnalyticsDataClient(credentials=credentials, transport="rest")
+            else:
+                raise
+    elif os.path.exists(CREDENTIALS_FILE):
+        credentials = service_account.Credentials.from_service_account_file(CREDENTIALS_FILE)
+        client = BetaAnalyticsDataClient(credentials=credentials, transport="rest")
+    else:
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = CREDENTIALS_FILE
+        client = BetaAnalyticsDataClient(transport="rest")
 
     # 1. Core Summary Metrics
     core_request = RunReportRequest(
