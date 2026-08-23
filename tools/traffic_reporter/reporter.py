@@ -32,6 +32,31 @@ if not os.path.isabs(CREDENTIALS_FILE):
     CREDENTIALS_FILE = str(Path(__file__).parent / CREDENTIALS_FILE)
 
 
+def setup_dns_resolution():
+    """Bypass local DNS sinkholes (e.g. Tailscale/NextDNS adblockers) using DNS-over-HTTPS."""
+    try:
+        r = requests.get("https://dns.google/resolve?name=analyticsdata.googleapis.com", timeout=4)
+        if r.status_code == 200:
+            answers = r.json().get("Answer", [])
+            ips = [a["data"] for a in answers if a.get("type") == 1]
+            if ips:
+                resolved_ip = ips[0]
+                _orig = socket.getaddrinfo
+
+                def patched_getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
+                    if host == "analyticsdata.googleapis.com":
+                        return _orig(resolved_ip, port, family, type, proto, flags)
+                    return _orig(host, port, family, type, proto, flags)
+
+                socket.getaddrinfo = patched_getaddrinfo
+    except Exception as e:
+        # Fallback to default system resolver if DoH fails
+        pass
+
+
+setup_dns_resolution()
+
+
 def format_duration(seconds_float: float) -> str:
     """Format seconds into readable min/sec string."""
     seconds = int(seconds_float)
@@ -48,7 +73,7 @@ def fetch_report(date_range_str: str = "yesterday") -> str:
         raise ValueError("Missing configuration: GA4_PROPERTY_ID, TELEGRAM_BOT_TOKEN, or TELEGRAM_CHAT_ID")
 
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = CREDENTIALS_FILE
-    client = BetaAnalyticsDataClient()
+    client = BetaAnalyticsDataClient(transport="rest")
 
     # 1. Core Summary Metrics
     core_request = RunReportRequest(

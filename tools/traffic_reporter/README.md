@@ -42,9 +42,9 @@ poetry run python reporter.py 2026-08-22
 
 ---
 
-## ⏰ Automated Daily Schedule (10:00 AM)
+## ⏰ Automated Daily Schedule (9:00 AM)
 
-The reporter runs automatically every morning at **10:00 AM** via macOS `launchd`:
+The reporter runs automatically every morning at **9:00 AM** via macOS `launchd`:
 
 * **Service Plist**: `~/Library/LaunchAgents/com.browsernexus.traffic-reporter.plist`
 * **Check Status**:
