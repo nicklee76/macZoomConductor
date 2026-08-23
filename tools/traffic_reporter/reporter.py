@@ -109,7 +109,9 @@ def fetch_report(date_range_str: str = "yesterday") -> str:
     sa_json_str = os.getenv("GA4_SERVICE_ACCOUNT_JSON")
     if sa_json_str and sa_json_str.strip():
         try:
-            sa_info = json.loads(sa_json_str)
+            sa_info = json.loads(sa_json_str, strict=False)
+            if "private_key" in sa_info and isinstance(sa_info["private_key"], str):
+                sa_info["private_key"] = sa_info["private_key"].replace("\\n", "\n")
             credentials = service_account.Credentials.from_service_account_info(sa_info)
             client = BetaAnalyticsDataClient(credentials=credentials, transport="rest")
         except Exception as e:
