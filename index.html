@@ -48,6 +48,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
   <!-- Schema.org Structured Data: SoftwareApplication -->
   <script type="application/ld+json">
@@ -87,15 +91,15 @@
     "author": {
       "@type": "Organization",
       "name": "bricolageTheory",
-      "url": "https://github.com/bricolageTheory"
+      "url": "https://browsernexus.com"
     },
     "featureList": [
       "Display-Aware Multi-Monitor Zoom Scaling",
       "Persistent Browser Window and Display Naming",
       "Instant Tab and Window Focus Jump Across Safari, Chrome & Firefox",
       "Hierarchical 4-Tier Zoom Precedence Cascade",
-      "Vi-Ergonomics & Global Hotkey (Shift+Cmd+Z) Navigation",
-      "0% Idle CPU Event-Driven Native Swift Architecture"
+      "Vi-Ergonomics & Global Hotkey (Shift+Cmd+A) Navigation",
+      "Very Low Idle CPU Event-Driven Native Swift Architecture"
     ]
   }
   </script>
@@ -132,10 +136,10 @@
       },
       {
         "@type": "Question",
-        "name": "Why does browserNexus consume 0% idle CPU?",
+        "name": "Why does browserNexus have very low idle CPU usage?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "browserNexus uses an event-driven architecture with native stdio messaging and UNIX domain sockets rather than continuous polling loops. When idle, zero CPU cycles and only ~14 MB RAM are consumed."
+          "text": "browserNexus uses an event-driven architecture with native stdio messaging and UNIX domain sockets rather than continuous polling loops. When idle, virtually no CPU cycles and only ~14 MB RAM are consumed."
         }
       },
       {
@@ -143,7 +147,7 @@
         "name": "How many Macs can I install my license on?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Each license (Annual, Monthly, or Lifetime) permits installation on up to 3 personal Mac computers for a single user."
+          "text": "Each license (Annual, Monthly, or Lifetime) permits installation on up to 2 personal Mac computers for a single user."
         }
       }
     ]
@@ -155,14 +159,7 @@
   <header class="site-header">
     <div class="nav-container">
       <a href="#" class="brand-logo">
-        <div class="app-icon">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="32" height="32" rx="8" fill="#151C28"/>
-            <path d="M7 16C7 11.0294 11.0294 7 16 7C20.9706 7 25 11.0294 25 16C25 20.9706 20.9706 25 16 25" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M12 16L15 19L21 13" stroke="#38BDF8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="22" cy="22" r="2.5" fill="#34D399"/>
-          </svg>
-        </div>
+        <img src="/assets/logo-64.png" alt="browserNexus Logo" class="app-icon" width="32" height="32">
         <span class="brand-name">browserNexus</span>
       </a>
 
@@ -170,6 +167,8 @@
         <a href="#features">Features</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/support/">Support</a>
       </nav>
 
       <div class="nav-actions">
@@ -293,9 +292,9 @@
                 <line x1="8" y1="16" x2="16" y2="16"></line>
               </svg>
             </div>
-            <h3 class="feature-card-title">Vi Keys & Global Hotkey (⇧⌘Z)</h3>
+            <h3 class="feature-card-title">Vi Keys & Global Hotkey (⇧⌘A)</h3>
             <p class="feature-card-desc">
-              Summon the command panel anywhere with <kbd>⇧⌘Z</kbd> (registered via Carbon HotKeys with zero Accessibility overhead). Navigate the tab tree with <kbd>j</kbd>/<kbd>k</kbd> and filter with <kbd>/</kbd>.
+              Summon the command panel anywhere with <kbd>⇧⌘A</kbd> (registered via Carbon HotKeys with zero Accessibility overhead). Navigate the tab tree with <kbd>j</kbd>/<kbd>k</kbd> and filter with <kbd>/</kbd>.
             </p>
             <div class="feature-pill">Vim Motion Ergonomics</div>
           </div>
@@ -356,7 +355,7 @@
               <li>✓ Safari, Chrome & Firefox extensions</li>
               <li>✓ Multi-display zoom auto-detection</li>
               <li>✓ Unlimited persistent window naming</li>
-              <li>✓ Vi-navigation & ⇧⌘Z global hotkey</li>
+              <li>✓ Vi-navigation & ⇧⌘A global hotkey</li>
               <li>✓ 14-day free trial included</li>
             </ul>
             <a href="#download" class="btn btn-secondary btn-block">Start 14-Day Free Trial</a>
@@ -379,7 +378,7 @@
               <li>✓ <strong>All Monthly features included</strong></li>
               <li>✓ Priority customer support</li>
               <li>✓ Continuous updates & new browser support</li>
-              <li>✓ Install on up to 3 personal Macs</li>
+              <li>✓ Install on up to 2 personal Macs</li>
               <li>✓ 14-day free trial included</li>
             </ul>
             <a href="#download" class="btn btn-primary btn-block">Get Annual License</a>
@@ -401,7 +400,7 @@
               <li>✓ <strong>All features unlocked permanently</strong></li>
               <li>✓ Lifetime updates included forever</li>
               <li>✓ Universal binary for Apple Silicon & Intel</li>
-              <li>✓ Install on up to 3 personal Macs</li>
+              <li>✓ Install on up to 2 personal Macs</li>
               <li>✓ 14-day money-back guarantee</li>
             </ul>
             <a href="#download" class="btn btn-secondary btn-block">Buy Lifetime License</a>
@@ -485,11 +484,11 @@
           <!-- Question 4 -->
           <div class="faq-item">
             <button class="faq-question">
-              <span>Why does browserNexus use 0% idle CPU?</span>
+              <span>Why does browserNexus have very low idle CPU usage?</span>
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
-              <p>Unlike Electron apps or scripts that constantly poll the system every 500ms, browserNexus uses a 100% event-driven architecture with native stdio messaging and UNIX domain sockets. When nothing is changing on screen, zero CPU cycles are consumed, keeping your MacBook cool and preserving battery life.</p>
+              <p>Unlike Electron apps or scripts that constantly poll the system every 500ms, browserNexus uses an event-driven architecture with native stdio messaging and UNIX domain sockets. When nothing is changing on screen, CPU consumption remains near zero, keeping your MacBook cool and preserving battery life.</p>
             </div>
           </div>
 
@@ -500,7 +499,7 @@
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
-              <p>Each license (Annual, Monthly, or Lifetime) permits installation on up to <strong>3 personal Mac computers</strong> for a single user.</p>
+              <p>Each license (Annual, Monthly, or Lifetime) permits installation on up to <strong>2 personal Mac computers</strong> for a single user.</p>
             </div>
           </div>
         </div>
@@ -512,13 +511,7 @@
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-brand">
-        <div class="app-icon-small">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="32" height="32" rx="8" fill="#151C28"/>
-            <path d="M7 16C7 11.0294 11.0294 7 16 7C20.9706 7 25 11.0294 25 16C25 20.9706 20.9706 25 16 25" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
-            <circle cx="22" cy="22" r="2.5" fill="#34D399"/>
-          </svg>
-        </div>
+        <img src="/assets/logo-64.png" alt="browserNexus Logo" class="app-icon-small" width="22" height="22">
         <span>browserNexus</span>
       </div>
 
@@ -527,7 +520,8 @@
         <a href="#features">Features</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
-        <a href="https://github.com/bricolageTheory/macZoomConductor" target="_blank" rel="noopener">GitHub</a>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
       </div>
 
       <div class="footer-copy">
