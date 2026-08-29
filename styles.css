@@ -850,11 +850,33 @@ body {
   box-shadow: 0 6px 18px rgba(255, 221, 0, 0.45);
 }
 
-.btn-bmc-header.btn-block {
-  width: 100%;
+/* Annual Card Buy Me a Coffee Button (Always Static - Never Shakes) */
+.btn-bmc-card {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  padding: 10px 20px;
+  gap: 8px;
+  width: 100%;
+  background: #FFDD00;
+  color: #0D0C22 !important;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 999px;
+  padding: 11px 20px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 221, 0, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  user-select: none;
+  text-decoration: none;
+  animation: none !important;
+  transform: none;
+}
+
+.btn-bmc-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 221, 0, 0.45);
 }
 
 .bmc-header-icon {
@@ -865,7 +887,7 @@ body {
   flex-shrink: 0;
 }
 
-/* 1-Second Shake Animation */
+/* 1-Second Shake Animation ONLY for the Top Header Button */
 @keyframes bmc-shake-animation {
   0% { transform: rotate(0deg) scale(1); }
   12.5% { transform: rotate(-14deg) scale(1.08); }
@@ -878,9 +900,8 @@ body {
   100% { transform: rotate(0deg) scale(1); }
 }
 
-.btn-bmc-header.is-shaking,
-.btn-coffee.is-shaking {
-  animation: bmc-shake-animation 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+#btnHeaderBmc.is-shaking {
+  animation: bmc-shake-animation 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both !important;
 }
 
 /* --- Buy Me a Coffee Modal --- */
