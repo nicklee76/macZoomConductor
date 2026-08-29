@@ -125,17 +125,18 @@ function setupBmcModal() {
   const modal = document.getElementById('bmcModal');
   const closeBtn = document.getElementById('bmcModalClose');
   const backdrop = document.getElementById('bmcModalBackdrop');
+  const headerBtn = document.getElementById('btnHeaderBmc');
   const bmcTriggers = document.querySelectorAll('#btnHeaderBmc, .btn-bmc-header, .btn-bmc-trigger');
 
   if (!modal) return;
 
   let isShaking = false;
-  function triggerShake() {
-    if (isShaking) return;
+  function triggerHeaderShake() {
+    if (isShaking || !headerBtn) return;
     isShaking = true;
-    bmcTriggers.forEach(btn => btn.classList.add('is-shaking'));
+    headerBtn.classList.add('is-shaking');
     setTimeout(() => {
-      bmcTriggers.forEach(btn => btn.classList.remove('is-shaking'));
+      headerBtn.classList.remove('is-shaking');
       isShaking = false;
     }, 1000);
   }
@@ -145,7 +146,7 @@ function setupBmcModal() {
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
     trackEvent('open_bmc_modal', {
-      source: 'header_button'
+      source: 'bmc_button'
     });
   }
 
@@ -155,11 +156,13 @@ function setupBmcModal() {
     document.body.style.overflow = '';
   }
 
-  // Click on header button: shake for 1 second and open modal
+  // Click on BMC triggers: open modal (and shake only the top header button)
   bmcTriggers.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      triggerShake();
+      if (btn === headerBtn) {
+        triggerHeaderShake();
+      }
       openModal();
     });
   });
@@ -174,12 +177,12 @@ function setupBmcModal() {
     }
   });
 
-  // Scroll handler: shake the header button for 1 second whenever user scrolls
+  // Scroll handler: shake ONLY the top header button for 1 second whenever user scrolls
   let lastScrollShake = 0;
   window.addEventListener('scroll', () => {
     const now = Date.now();
     if (now - lastScrollShake > 2500) {
-      triggerShake();
+      triggerHeaderShake();
       lastScrollShake = now;
     }
   }, { passive: true });
