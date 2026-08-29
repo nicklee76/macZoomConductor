@@ -989,10 +989,10 @@ body {
   background: rgba(255, 221, 0, 0.14);
   color: #FFDD00;
   border: 1px solid rgba(255, 221, 0, 0.3);
-  font-size: 0.76rem;
+  font-size: 0.82rem;
   font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  text-transform: none;
+  letter-spacing: 0.01em;
   padding: 4px 12px;
   border-radius: 999px;
   margin-bottom: 12px;
