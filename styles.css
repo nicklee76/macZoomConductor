@@ -829,6 +829,13 @@ body {
   box-shadow: 0 6px 18px rgba(255, 221, 0, 0.45);
 }
 
+.btn-bmc-header.btn-block {
+  width: 100%;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 0.92rem;
+}
+
 .bmc-header-icon {
   width: 16px;
   height: 22px;
