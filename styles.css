@@ -97,8 +97,21 @@ body {
 }
 
 .brand-name {
-  font-weight: 700;
+  font-family: 'Iceland', cursive, sans-serif;
+  font-size: 1.55rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   color: #FFFFFF;
+  line-height: 1;
+}
+
+.bn-brand {
+  font-family: 'Iceland', cursive, sans-serif;
+  font-size: 1.18em;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  display: inline-block;
+  vertical-align: baseline;
 }
 
 .nav-links {
@@ -757,6 +770,14 @@ body {
   gap: 8px;
   font-weight: 700;
   color: var(--text-main);
+}
+
+.footer-brand span {
+  font-family: 'Iceland', cursive, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
 }
 
 .app-icon-small {

@@ -7,6 +7,10 @@
   <meta name="description" content="Help with browserNexus: connecting the extension, tab previews, browser profiles, and how to get in touch.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://browsernexus.com/support/">
+    <!-- Typography & Styles -->
+  <link rel=preconnect href="https://fonts.googleapis.com">
+  <link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Iceland&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -53,7 +57,7 @@
 
   <main class="legal">
     <h1>Support</h1>
-    <p class="updated">browserNexus for macOS</p>
+    <p class="updated"><span class="bn-brand">browserNexus</span> for macOS</p>
 
     <div class="callout">
       <p><strong>Email <a href="mailto:bricolagetheory@gmail.com">bricolagetheory@gmail.com</a></strong>
@@ -65,25 +69,25 @@
     <p>These are the things people hit first, and each has a quick answer.</p>
 
     <h3>The extension says "offline", or the app shows no windows</h3>
-    <p>The extension talks to the browserNexus app on the same Mac. If the app is
+    <p>The extension talks to the <span class="bn-brand">browserNexus</span> app on the same Mac. If the app is
     not running, the extension has nothing to talk to.</p>
     <ol>
-      <li>Check that browserNexus is running — it lives in the menu bar.</li>
+      <li>Check that <span class="bn-brand">browserNexus</span> is running — it lives in the menu bar.</li>
       <li>Open the extension's popup and press the reconnect button.</li>
       <li>Still nothing? Quit the app, start it again, and reload the extension.</li>
     </ol>
 
     <h3>Tab previews are blank, or say "No preview yet"</h3>
-    <p>Previews need permission to read page contents, and browserNexus
+    <p>Previews need permission to read page contents, and <span class="bn-brand">browserNexus</span>
     deliberately does <em>not</em> ask for it when you install the extension — so
     it is off until you turn it on.</p>
     <ul>
       <li><strong>Chrome:</strong> open the extension popup and click
       <em>Enable previews</em>, then <em>Allow</em>. If the dialog disappears
       before you can answer it — switching apps closes it — use
-      <code>chrome://extensions</code> → browserNexus → Details → Site access →
+      <code>chrome://extensions</code> → <span class="bn-brand">browserNexus</span> → Details → Site access →
       <em>On all sites</em>.</li>
-      <li><strong>Firefox:</strong> <code>about:addons</code> → browserNexus →
+      <li><strong>Firefox:</strong> <code>about:addons</code> → <span class="bn-brand">browserNexus</span> →
       Permissions → <em>Access your data for all websites</em>.</li>
     </ul>
     <p>Then switch tabs once. The first picture of a tab is taken when it becomes
@@ -93,7 +97,7 @@
     no preview at all — Safari offers no way to photograph them.</p>
 
     <h3>I use several browser profiles and only one shows up</h3>
-    <p>Known limitation. browserNexus currently tracks one profile per browser at
+    <p>Known limitation. <span class="bn-brand">browserNexus</span> currently tracks one profile per browser at
     a time — whichever connected most recently. Support for several at once is
     planned.</p>
 
@@ -119,7 +123,7 @@
     is sent anywhere unless you attach it yourself.</p>
 
     <h2>Privacy</h2>
-    <p>browserNexus has no servers and collects nothing. See the
+    <p><span class="bn-brand">browserNexus</span> has no servers and collects nothing. See the
     <a href="/privacy/">privacy policy</a>.</p>
 
     <h2>Contact</h2>
@@ -138,7 +142,7 @@
         <a href="/privacy/">Privacy</a>
       </div>
       <div class="footer-copy">
-        © 2026 browserNexus. All rights reserved. macOS, Safari, and Apple Silicon are trademarks of Apple Inc.
+        © 2026 <span class="bn-brand">browserNexus</span>. All rights reserved. macOS, Safari, and Apple Silicon are trademarks of Apple Inc.
       </div>
     </div>
   </footer>
@@ -152,11 +156,11 @@
       <div class="bmc-modal-header">
         <div class="bmc-modal-badge">
           <img src="/assets/bmc-logo.svg" alt="Coffee" width="14" height="20">
-          <span>Support browserNexus</span>
+          <span>Support <span class="bn-brand">browserNexus</span></span>
         </div>
         <h3 class="bmc-modal-title">Buy Me a Coffee</h3>
         <p class="bmc-modal-subtitle">
-          browserNexus is 100% free during early access. Scan with your phone or click the button below to support independent development!
+          <span class="bn-brand">browserNexus</span> is 100% free during early access. Scan with your phone or click the button below to support independent development!
         </p>
       </div>
 
