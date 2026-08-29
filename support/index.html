@@ -133,5 +133,45 @@
       </div>
     </div>
   </footer>
+
+  <!-- Floating Sticky Buy Me a Coffee Widget -->
+  <button id="floatingBmcBtn" class="floating-bmc-btn" aria-label="Buy Me a Coffee" title="Buy Me a Coffee">
+    <img src="/assets/bmc-logo.svg" alt="Buy Me a Coffee" class="floating-bmc-icon" width="18" height="25">
+    <span class="floating-bmc-text">Buy me a coffee</span>
+  </button>
+
+  <!-- Buy Me a Coffee QR Modal -->
+  <div id="bmcModal" class="bmc-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="bmc-modal-backdrop" id="bmcModalBackdrop"></div>
+    <div class="bmc-modal-card">
+      <button class="bmc-modal-close" id="bmcModalClose" aria-label="Close dialog">&times;</button>
+      
+      <div class="bmc-modal-header">
+        <div class="bmc-modal-badge">
+          <img src="/assets/bmc-logo.svg" alt="Coffee" width="14" height="20">
+          <span>Support browserNexus</span>
+        </div>
+        <h3 class="bmc-modal-title">Buy Me a Coffee</h3>
+        <p class="bmc-modal-subtitle">
+          browserNexus is 100% free during early access. Scan with your phone or click the button below to support independent development!
+        </p>
+      </div>
+
+      <div class="bmc-qr-container">
+        <div class="bmc-qr-frame">
+          <img src="/assets/bmc-qr.png" alt="Scan to Buy Me a Coffee" class="bmc-qr-image" width="180" height="180">
+        </div>
+        <span class="bmc-qr-hint">📷 Scan with your phone camera</span>
+      </div>
+
+      <div class="bmc-modal-footer">
+        <a href="https://buymeacoffee.com/bricolageTheory" target="_blank" rel="noopener" class="btn btn-coffee btn-block">
+          Open buymeacoffee.com ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
 </body>
 </html>

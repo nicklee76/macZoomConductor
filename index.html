@@ -172,8 +172,10 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="#pricing" class="btn btn-ghost">Download Trial</a>
-        <a href="#pricing" class="btn btn-primary">Get License</a>
+        <a href="https://buymeacoffee.com/browsernexus" target="_blank" rel="noopener" class="btn btn-coffee-nav">
+          ☕ Buy Me a Coffee
+        </a>
+        <a href="#download" class="btn btn-primary">Download Free Beta</a>
       </div>
     </div>
   </header>
@@ -191,15 +193,15 @@
         </p>
 
         <div class="hero-cta-group">
-          <a href="#pricing" class="btn btn-primary btn-large">
+          <a href="#download" class="btn btn-primary btn-large">
             <svg class="icon" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v7.586l2.293-2.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 11.586V4a1 1 0 011-1z" clip-rule="evenodd"/>
               <path fill-rule="evenodd" d="M3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
             </svg>
-            Download 14-Day Free Trial
+            Download Free Beta (.dmg)
           </a>
-          <a href="#features" class="btn btn-secondary btn-large">
-            Explore Features
+          <a href="https://buymeacoffee.com/browsernexus" target="_blank" rel="noopener" class="btn btn-coffee btn-large">
+            ☕ Buy Me a Coffee
           </a>
         </div>
       </div>
@@ -322,17 +324,34 @@
     <section id="pricing" class="pricing-section">
       <div class="section-container">
         <div class="section-header text-center">
-          <div class="section-tag">Pricing</div>
-          <h2 class="section-title">Simple, Honest Pricing</h2>
+          <div class="section-tag">Early Access & Pricing</div>
+          <h2 class="section-title">Free During Beta • Supported by You</h2>
           <p class="section-subtitle">
-            Every license includes a fully functional 14-day free trial. Choose the plan that fits your setup.
+            Until the official version 1.0 release, <strong>browserNexus is 100% free to download and use</strong>. If you love the app and want to support ongoing development, consider buying us a coffee!
           </p>
+
+          <!-- Beta Support Banner -->
+          <div class="beta-callout-card">
+            <div class="beta-callout-badge">🚀 Pre-1.0 Early Access</div>
+            <h3 class="beta-callout-title">Free & Unrestricted Now — Commercial at v1.0</h3>
+            <p class="beta-callout-desc">
+              We want everyone to test multi-display scaling and window management freely. The commercial plans below will activate when <strong>version 1.0</strong> launches. Until then, enjoy full access for free, and support independent development with a coffee if it saves you time!
+            </p>
+            <div class="beta-callout-actions">
+              <a href="https://buymeacoffee.com/browsernexus" target="_blank" rel="noopener" class="btn btn-coffee">
+                ☕ Buy Me a Coffee
+              </a>
+              <a href="#download" class="btn btn-secondary">
+                Download Free Beta (.dmg)
+              </a>
+            </div>
+          </div>
 
           <!-- Billing Selector Toggle -->
           <div class="pricing-switcher">
             <button class="switch-btn" id="btnPricingMonthly">Monthly</button>
             <button class="switch-btn active" id="btnPricingAnnual">
-              Annual <span class="discount-badge">Save 22%</span>
+              Annual <span class="discount-badge">Save 22% at v1.0</span>
             </button>
             <button class="switch-btn" id="btnPricingLifetime">Lifetime</button>
           </div>
@@ -343,45 +362,49 @@
           <div class="pricing-card" id="cardMonthly">
             <div class="card-header">
               <h3 class="tier-name">Monthly</h3>
-              <p class="tier-desc">Flexible month-to-month access. Cancel anytime.</p>
+              <p class="tier-desc">Flexible month-to-month access starting at v1.0.</p>
             </div>
             <div class="price-box">
+              <span class="price-strikethrough">$1.29</span>
               <span class="currency">$</span>
-              <span class="amount">1.29</span>
-              <span class="period">/ month</span>
+              <span class="amount">0</span>
+              <span class="period">/ beta</span>
+              <span class="free-tag">Free Now</span>
             </div>
-            <div class="contract-note">Billed monthly • No contract</div>
+            <div class="contract-note">Standard $1.29/mo starting at v1.0 • 100% free during beta</div>
             <ul class="tier-features">
               <li>✓ Safari, Chrome & Firefox extensions</li>
               <li>✓ Multi-display zoom auto-detection</li>
               <li>✓ Unlimited persistent window naming</li>
               <li>✓ Vi-navigation & ⇧⌘A global hotkey</li>
-              <li>✓ 14-day free trial included</li>
+              <li>✓ <strong>Free unrestricted Early Access</strong></li>
             </ul>
-            <a href="#download" class="btn btn-secondary btn-block">Start 14-Day Free Trial</a>
+            <a href="#download" class="btn btn-secondary btn-block">Download Free Beta</a>
           </div>
 
           <!-- Annual Plan (Featured) -->
           <div class="pricing-card featured" id="cardAnnual">
-            <div class="popular-tag">Best Value</div>
+            <div class="popular-tag">Planned v1.0 Best Value</div>
             <div class="card-header">
               <h3 class="tier-name">Annual</h3>
               <p class="tier-desc">Best value subscription with continuous feature releases.</p>
             </div>
             <div class="price-box">
+              <span class="price-strikethrough">$1.00</span>
               <span class="currency">$</span>
-              <span class="amount">1.00</span>
-              <span class="period">/ month</span>
+              <span class="amount">0</span>
+              <span class="period">/ beta</span>
+              <span class="free-tag">Free Now</span>
             </div>
-            <div class="contract-note highlight">$12.00 billed annually (1-year plan)</div>
+            <div class="contract-note highlight">Standard $12.00/yr starting at v1.0 • Free today</div>
             <ul class="tier-features">
               <li>✓ <strong>All Monthly features included</strong></li>
               <li>✓ Priority customer support</li>
               <li>✓ Continuous updates & new browser support</li>
               <li>✓ Install on up to 2 personal Macs</li>
-              <li>✓ 14-day free trial included</li>
+              <li>✓ <strong>Free unrestricted Early Access</strong></li>
             </ul>
-            <a href="#download" class="btn btn-primary btn-block">Get Annual License</a>
+            <a href="https://buymeacoffee.com/browsernexus" target="_blank" rel="noopener" class="btn btn-coffee btn-block">☕ Support on Buy Me a Coffee</a>
           </div>
 
           <!-- Lifetime Plan -->
@@ -391,24 +414,26 @@
               <p class="tier-desc">Pay once, own forever. For Mac software purists.</p>
             </div>
             <div class="price-box">
+              <span class="price-strikethrough">$19.99</span>
               <span class="currency">$</span>
-              <span class="amount">19.99</span>
-              <span class="period">one-time</span>
+              <span class="amount">0</span>
+              <span class="period">/ beta</span>
+              <span class="free-tag">Free Now</span>
             </div>
-            <div class="contract-note">Single payment • Lifetime updates</div>
+            <div class="contract-note">Standard $19.99 starting at v1.0 • 100% free during beta</div>
             <ul class="tier-features">
               <li>✓ <strong>All features unlocked permanently</strong></li>
               <li>✓ Lifetime updates included forever</li>
               <li>✓ Universal binary for Apple Silicon & Intel</li>
               <li>✓ Install on up to 2 personal Macs</li>
-              <li>✓ 14-day money-back guarantee</li>
+              <li>✓ <strong>Free unrestricted Early Access</strong></li>
             </ul>
-            <a href="#download" class="btn btn-secondary btn-block">Buy Lifetime License</a>
+            <a href="#download" class="btn btn-secondary btn-block">Download Free Beta</a>
           </div>
         </div>
 
         <div class="trial-guarantee text-center">
-          <p>All plans include an unrestricted <strong>14-day free trial</strong>. No credit card required to start.</p>
+          <p>During our pre-1.0 Early Access period, all features are completely unlocked without restrictions. If you'd like to support the project, <a href="https://buymeacoffee.com/browsernexus" target="_blank" rel="noopener" style="color: #FFDD00; font-weight: 600; text-decoration: underline;">Buy Me a Coffee ☕</a>.</p>
         </div>
       </div>
     </section>
@@ -420,11 +445,14 @@
           <div class="download-content">
             <h2 class="download-title">Ready to orchestrate your browser tabs?</h2>
             <p class="download-desc">
-              Download browserNexus today. Compatible with macOS 13+ (Ventura, Sonoma, Sequoia).
+              Download browserNexus Beta today. Compatible with macOS 13+ (Ventura, Sonoma, Sequoia).
             </p>
-            <div class="download-buttons">
+            <div class="download-buttons" style="display: flex; gap: 12px; flex-wrap: wrap;">
               <a href="#" class="btn btn-primary btn-large">
                 Download for macOS (.dmg)
+              </a>
+              <a href="https://buymeacoffee.com/browsernexus" target="_blank" rel="noopener" class="btn btn-coffee btn-large">
+                ☕ Buy Me a Coffee
               </a>
             </div>
           </div>
@@ -529,6 +557,44 @@
       </div>
     </div>
   </footer>
+
+  <!-- Floating Sticky Buy Me a Coffee Widget -->
+  <button id="floatingBmcBtn" class="floating-bmc-btn" aria-label="Buy Me a Coffee" title="Buy Me a Coffee">
+    <img src="/assets/bmc-logo.svg" alt="Buy Me a Coffee" class="floating-bmc-icon" width="18" height="25">
+    <span class="floating-bmc-text">Buy me a coffee</span>
+  </button>
+
+  <!-- Buy Me a Coffee QR Modal -->
+  <div id="bmcModal" class="bmc-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="bmc-modal-backdrop" id="bmcModalBackdrop"></div>
+    <div class="bmc-modal-card">
+      <button class="bmc-modal-close" id="bmcModalClose" aria-label="Close dialog">&times;</button>
+      
+      <div class="bmc-modal-header">
+        <div class="bmc-modal-badge">
+          <img src="/assets/bmc-logo.svg" alt="Coffee" width="14" height="20">
+          <span>Support browserNexus</span>
+        </div>
+        <h3 class="bmc-modal-title">Buy Me a Coffee</h3>
+        <p class="bmc-modal-subtitle">
+          browserNexus is 100% free during early access. Scan with your phone or click the button below to support independent development!
+        </p>
+      </div>
+
+      <div class="bmc-qr-container">
+        <div class="bmc-qr-frame">
+          <img src="/assets/bmc-qr.png" alt="Scan to Buy Me a Coffee" class="bmc-qr-image" width="180" height="180">
+        </div>
+        <span class="bmc-qr-hint">📷 Scan with your phone camera</span>
+      </div>
+
+      <div class="bmc-modal-footer">
+        <a href="https://buymeacoffee.com/bricolageTheory" target="_blank" rel="noopener" class="btn btn-coffee btn-block">
+          Open buymeacoffee.com ↗
+        </a>
+      </div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>

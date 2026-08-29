@@ -383,6 +383,122 @@ body {
   border-radius: 999px;
 }
 
+/* Beta Early Access Callout Banner */
+.beta-callout-card {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.12) 0%, rgba(255, 221, 0, 0.08) 100%);
+  border: 1px solid rgba(255, 221, 0, 0.3);
+  border-radius: var(--radius-xl);
+  padding: 28px 32px;
+  margin: 28px auto 0;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.beta-callout-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 221, 0, 0.16);
+  color: #FFDD00;
+  border: 1px solid rgba(255, 221, 0, 0.35);
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.beta-callout-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.beta-callout-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.beta-callout-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 6px;
+}
+
+/* Buy Me a Coffee Button Variants */
+.btn-coffee {
+  background: #FFDD00;
+  color: #000000 !important;
+  font-weight: 700;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-coffee:hover {
+  background: #FFE433;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 221, 0, 0.35);
+}
+
+.btn-coffee-nav {
+  background: rgba(255, 221, 0, 0.12);
+  color: #FFDD00;
+  border: 1px solid rgba(255, 221, 0, 0.35);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.btn-coffee-nav:hover {
+  background: #FFDD00;
+  color: #000000;
+}
+
+/* Strikethrough & Free Badges in Pricing Cards */
+.price-strikethrough {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: line-through;
+  text-decoration-color: #EF4444;
+  text-decoration-thickness: 2.5px;
+  margin-right: 8px;
+}
+
+.free-tag {
+  background: rgba(52, 211, 153, 0.15);
+  color: #34D399;
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 999px;
+  margin-left: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
 .pricing-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -684,5 +800,204 @@ body {
   }
   .nav-links {
     display: none;
+  }
+}
+
+/* --- Floating Sticky Buy Me a Coffee Widget --- */
+.floating-bmc-btn {
+  position: fixed;
+  top: 16px;
+  right: 20px;
+  z-index: 1100;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: #FFDD00;
+  color: #0D0C22 !important;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 999px;
+  padding: 8px 18px 8px 12px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 221, 0, 0.5);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+  transform-origin: center center;
+  user-select: none;
+}
+
+.floating-bmc-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 25px rgba(255, 221, 0, 0.5);
+}
+
+.floating-bmc-icon {
+  width: 18px;
+  height: 25px;
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.floating-bmc-text {
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+/* 1-Second Shake Animation */
+@keyframes bmc-shake-animation {
+  0% { transform: rotate(0deg) scale(1); }
+  12.5% { transform: rotate(-14deg) scale(1.08); }
+  25% { transform: rotate(12deg) scale(1.08); }
+  37.5% { transform: rotate(-10deg) scale(1.05); }
+  50% { transform: rotate(8deg) scale(1.05); }
+  62.5% { transform: rotate(-6deg) scale(1.02); }
+  75% { transform: rotate(4deg) scale(1.01); }
+  87.5% { transform: rotate(-2deg) scale(1.005); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+.floating-bmc-btn.is-shaking {
+  animation: bmc-shake-animation 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* --- Buy Me a Coffee Modal --- */
+.bmc-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.bmc-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.bmc-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 7, 12, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.bmc-modal-card {
+  position: relative;
+  background: #111724;
+  border: 1px solid rgba(255, 221, 0, 0.35);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(255, 221, 0, 0.15);
+  border-radius: var(--radius-xl);
+  max-width: 420px;
+  width: 100%;
+  padding: 32px 28px 26px;
+  text-align: center;
+  transform: scale(0.92) translateY(12px);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 1;
+}
+
+.bmc-modal.is-open .bmc-modal-card {
+  transform: scale(1) translateY(0);
+}
+
+.bmc-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  border-radius: 50%;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.bmc-modal-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+}
+
+.bmc-modal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 221, 0, 0.14);
+  color: #FFDD00;
+  border: 1px solid rgba(255, 221, 0, 0.3);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.bmc-modal-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0 0 6px;
+}
+
+.bmc-modal-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0 0 20px;
+}
+
+.bmc-qr-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.bmc-qr-frame {
+  background: #FFFFFF;
+  padding: 12px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  display: inline-flex;
+}
+
+.bmc-qr-image {
+  width: 180px;
+  height: 180px;
+  display: block;
+  object-fit: contain;
+}
+
+.bmc-qr-hint {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.bmc-modal-footer {
+  margin-top: 4px;
+}
+
+@media (max-width: 640px) {
+  .floating-bmc-btn {
+    top: 14px;
+    right: 14px;
+    padding: 9px 12px;
   }
 }

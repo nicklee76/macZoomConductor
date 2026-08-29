@@ -120,6 +120,69 @@ function setupCtaTracking() {
   });
 }
 
+// --- Buy Me a Coffee Floating Widget & Modal ---
+function setupFloatingBmc() {
+  const btn = document.getElementById('floatingBmcBtn');
+  const modal = document.getElementById('bmcModal');
+  const closeBtn = document.getElementById('bmcModalClose');
+  const backdrop = document.getElementById('bmcModalBackdrop');
+
+  if (!btn || !modal) return;
+
+  let isShaking = false;
+  function triggerShake() {
+    if (isShaking) return;
+    isShaking = true;
+    btn.classList.add('is-shaking');
+    setTimeout(() => {
+      btn.classList.remove('is-shaking');
+      isShaking = false;
+    }, 1000);
+  }
+
+  function openModal() {
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    trackEvent('open_bmc_modal', {
+      source: 'floating_widget'
+    });
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Click on floating button: shake for 1 second and open modal
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    triggerShake();
+    openModal();
+  });
+
+  // Close handlers
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (backdrop) backdrop.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
+
+  // Scroll handler: shake the button for 1 second whenever user scrolls
+  let lastScrollShake = 0;
+  window.addEventListener('scroll', () => {
+    const now = Date.now();
+    if (now - lastScrollShake > 2500) {
+      triggerShake();
+      lastScrollShake = now;
+    }
+  }, { passive: true });
+}
+
 // --- Global Namespace ---
 window.browserNexus = {
   version: '1.0.0',
@@ -132,4 +195,5 @@ document.addEventListener('DOMContentLoaded', () => {
   setupFaqAccordion();
   setupSnippetCopy();
   setupCtaTracking();
+  setupFloatingBmc();
 });
