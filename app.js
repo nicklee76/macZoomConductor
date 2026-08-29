@@ -120,22 +120,22 @@ function setupCtaTracking() {
   });
 }
 
-// --- Buy Me a Coffee Floating Widget & Modal ---
-function setupFloatingBmc() {
-  const btn = document.getElementById('floatingBmcBtn');
+// --- Buy Me a Coffee Header Button & QR Modal ---
+function setupBmcModal() {
   const modal = document.getElementById('bmcModal');
   const closeBtn = document.getElementById('bmcModalClose');
   const backdrop = document.getElementById('bmcModalBackdrop');
+  const bmcTriggers = document.querySelectorAll('#btnHeaderBmc, .btn-bmc-header, .btn-bmc-trigger');
 
-  if (!btn || !modal) return;
+  if (!modal) return;
 
   let isShaking = false;
   function triggerShake() {
     if (isShaking) return;
     isShaking = true;
-    btn.classList.add('is-shaking');
+    bmcTriggers.forEach(btn => btn.classList.add('is-shaking'));
     setTimeout(() => {
-      btn.classList.remove('is-shaking');
+      bmcTriggers.forEach(btn => btn.classList.remove('is-shaking'));
       isShaking = false;
     }, 1000);
   }
@@ -145,7 +145,7 @@ function setupFloatingBmc() {
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
     trackEvent('open_bmc_modal', {
-      source: 'floating_widget'
+      source: 'header_button'
     });
   }
 
@@ -155,11 +155,13 @@ function setupFloatingBmc() {
     document.body.style.overflow = '';
   }
 
-  // Click on floating button: shake for 1 second and open modal
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    triggerShake();
-    openModal();
+  // Click on header button: shake for 1 second and open modal
+  bmcTriggers.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      triggerShake();
+      openModal();
+    });
   });
 
   // Close handlers
@@ -172,7 +174,7 @@ function setupFloatingBmc() {
     }
   });
 
-  // Scroll handler: shake the button for 1 second whenever user scrolls
+  // Scroll handler: shake the header button for 1 second whenever user scrolls
   let lastScrollShake = 0;
   window.addEventListener('scroll', () => {
     const now = Date.now();
@@ -195,5 +197,5 @@ document.addEventListener('DOMContentLoaded', () => {
   setupFaqAccordion();
   setupSnippetCopy();
   setupCtaTracking();
-  setupFloatingBmc();
+  setupBmcModal();
 });
