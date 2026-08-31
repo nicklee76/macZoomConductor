@@ -1,0 +1,5 @@
+file '/Users/coolnick/Projects/browserNexus/marketing/video/vo_01_hook.aiff'
+file '/Users/coolnick/Projects/browserNexus/marketing/video/vo_02_intro.aiff'
+file '/Users/coolnick/Projects/browserNexus/marketing/video/vo_03_baseline.aiff'
+file '/Users/coolnick/Projects/browserNexus/marketing/video/vo_04_rules.aiff'
+file '/Users/coolnick/Projects/browserNexus/marketing/video/vo_05_cta.aiff'
